@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlpineJS Bootcamp Widgets</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.0/dist/alpine.min.js" defer></script>
+    <script src="greet.js" defer></script>
+    <script src="transportFee.js" defer></script>
+    <script src="totalPhoneBill.js" defer></script>
+    <script src="enoughAirtime.js"></script>
+
+</head>
+<body style="padding: 20px; margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: grey;"> <hr>
+
+    <h1>Welcome to AlpineJS bootcamp functions widgets</h1> 
+
+    <hr>
+
+    <!--<div x-data="{ name: '', greeting: '' }">
+        <input type="text" x-model="name" placeholder="Enter your name">
+        <button x-on:click="alert('Hello, ' + name)">Greet</button>
+        <p x-show="!name">Hello, we did not get your name</p>
+    </div>-->
+        
+      
+    <div x-data="{ name: '', greeting: '' }">
+        <h4>Greetings</h4>
+        <input type="text" x-model="name" placeholder="Enter your name">
+        <button x-on:click="greeting = name ? 'Hello, ' + name : 'Hello, we did not get your name'">Greet</button>
+        <p x-text="greeting"></p>
+    </div>
+      
+      <!--<div x-data>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <button id="greetButton">Greet</button>
+      </div>-->
+      
+    <hr>
+
+    <div>
+        <h4>The transport fee</h4>
+        <div x-data="{ shift: ' ' }">
+        
+            <label>
+                <input type="radio" x-model="shift" value="morning">Morning Shift</label>
+            <br>
+
+            <label>
+                <input type="radio" x-model="shift" value="afternoon">Afternoon Shift
+            </label>
+            <br>
+            <label>
+              <input type="radio" x-model="shift" value="nightshift">
+              Night Shift
+            </label>
+        
+            <div x-show="shift" x-text="'Transport Fee: ' + transportFee(shift)" style="padding-top: 1em ;"></div>
+          </div>
+    </div>
+    <hr>
+
+    <div>
+        <h4>Total phone bill</h4>
+            <!--<div x-data="{ activities: '', result: '' }">
+              <input type="text" id="activitiesInput" x-model="activities" placeholder="enter activity/activities">
+              <button x-on:click="result = totalPhoneBill(activities)">Calculate Bill</button>   
+              <div x-show="Total phone bill" x-text="'Total Bill: ' + result">Total Bill:</div>
+            </div>-->
+            <!--<div for="phoneString">Phone String:</div>-->
+            <div x-data="{ calls: '', sms: '', totalBill: 0 }">
+              <div style="padding-bottom: 1em;">
+                <label for="calls">Phone activity/activities: </label>
+                <input type="string" id="calls" x-model="calls">
+              </div>
+             <!--- <div style="padding-bottom: 1em;">
+                <label for="sms">Number of SMS: </label>
+                <input type="string" id="sms" x-model="sms">
+              </div>-->
+              <button x-on:click="totalBill = totalPhoneBill(calls, sms)">Calculate bill</button>
+              <div style="padding-top: 1em; ;">
+                Total Bill: <span x-text="totalBill"></span>
+              </div>
+            </div>
+            <hr>           
+    </div>
+
+      <h4>Enough Airtime</h4>
+      <div x-data="{ projectedUsage: '', airtime: '', remainingAirtime: 0 }">
+        <div style="padding-bottom: 1em;">
+          <label for="projected-usage">Projected Usage: </label>
+          <input type="string" id="projected-usage" x-model="projectedUsage">
+        </div>
+        <div style="padding-bottom: 1em;">
+          <label for="airtime">Available Airtime: </label>
+          <input type="number" id="airtime" x-model="airtime">
+        </div>
+        <button x-on:click="remainingAirtime = enoughAirtime(projectedUsage, airtime)">Calculate airtime</button>
+        <div style="padding-top: 1em;">
+          Remaining Airtime: <span x-text="remainingAirtime"></span>
+        </div>
+        <hr>
+      </div>
+
+    
+
+
+    
+</body>
+</html>
